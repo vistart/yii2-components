@@ -75,7 +75,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
                 ], $config));
     }
 
-    protected function mockWebApplication($config = [], $appClass = '\yii\web\Application')
+    protected function mockWebApplication($config = [], $appClass = '\vistart\components\web\Application')
     {
         new $appClass(ArrayHelper::merge([
                 'id' => 'testapp',

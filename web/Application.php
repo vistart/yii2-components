@@ -15,6 +15,7 @@ namespace vistart\components\web;
 /**
  * Description of Application
  *
+ * @property-read MultiDomainsManager $multiDomainsManager
  * @author vistart <i@vistart.name>
  */
 class Application extends \yii\web\Application

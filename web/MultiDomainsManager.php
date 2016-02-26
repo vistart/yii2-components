@@ -135,7 +135,7 @@ class MultiDomainsManager extends \yii\base\Component
 
     /**
      * Get URL Manager of current domain web application.
-     * @return MultiDomainsUrlManager url manager instance.
+     * @return \yii\web\UrlManager url manager instance.
      */
     public function getCurrent()
     {

@@ -1,0 +1,16 @@
+exclude_paths:
+    - docs/**/*
+    - tests/**/*
+    - gii/**/*
+    
+ratings:
+    paths:
+        - rest/**
+        - web/**
+        - widgets/**
+        
+engines:
+    phpmd:
+        enabled: true
+    phpcodesniffer:
+        enabled: true
