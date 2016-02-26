@@ -1,0 +1,23 @@
+{
+    "name": "vistart/yii2-components",
+    "description": "The Components for Yii 2 Applications",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","vistart","component"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "vistart",
+            "email": "i@vistart.name"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": ">=2.0.7",
+        "vistart/helpers": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "vistart\\components\\": ""
+        }
+    }
+}
