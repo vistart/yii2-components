@@ -28,7 +28,10 @@ class StackWidget extends Widget
 
     /**
      * Holds all added widgets
-     *
+     * 'key' => [
+     *     'class' => <class>
+     *     <other options>
+     * ]
      * @var Widget[]
      */
     protected $widgets = [];
@@ -67,7 +70,7 @@ class StackWidget extends Widget
         $widgets = $this->getWidgets();
         foreach ($widgets as $widget) {
             $i++;
-            $content .= $widget;
+            $content .= $widget->run();
             if ($i != count($widgets)) {
                 $content .= $this->seperator;
             }
@@ -76,21 +79,25 @@ class StackWidget extends Widget
     }
 
     /**
-     * 
+     * @param string|integer
      * @param array $config this array must contain `class`, optionally contain `key`.
-     * @return type
      */
-    public function addWidget($config = [])
+    public function addWidget($key = null, $config = [])
     {
         if (empty($config)) {
             return null;
         }
-        $class = $config['class'];
-        unset($config['class']);
-        if (isset($config['key'])) {
-            $this->widgets[$config['key']] = new $class($config);
+        if ($key === null) {
+            $this->widgets[] = $config;
         } else {
-            $this->widgets[] = new $class($config);
+            $this->widgets[$key] = $config;
+        }
+    }
+
+    public function removeWidget($key)
+    {
+        if (array_key_exists($key, $this->widgets)) {
+            unset($this->widgets[$key]);
         }
     }
 
@@ -100,13 +107,33 @@ class StackWidget extends Widget
      */
     public function getWidgets()
     {
-        return $this->widgets;
+        $widgetsConfig = $this->widgets;
+        $widgets = [];
+        foreach ($widgetsConfig as $key => $w) {
+            if (!is_array($w)) {
+                continue;
+            }
+            $class = '';
+            if (isset($w['class'])) {
+                $class = $w['class'];
+                unset($w['class']);
+            } else {
+                $class = \yii\base\Widget::className();
+            }
+            try {
+                $widgets[$key] = new $class($w);
+            } catch (\Exception $ex) {
+                
+            }
+        }
+        return $widgets;
     }
 
-    public function removeWidget($key)
+    public function setWidgets($configs = [])
     {
-        if (array_key_exists($key, $this->widgets)) {
-            unset($this->widgets[$key]);
+        if (!is_array($configs)) {
+            return null;
         }
+        return $this->widgets = $configs;
     }
 }
