@@ -12,7 +12,6 @@
 
 namespace vistart\components\widgets;
 
-use Yii;
 use yii\base\Widget;
 
 /**
