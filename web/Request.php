@@ -12,12 +12,14 @@
 
 namespace vistart\components\web;
 
+use yii\web\Request;
+
 /**
  * Description of Request
  *
  * @author vistart <i@vistart.name>
  */
-class Request extends \yii\web\Request
+class Request extends Request
 {
 
     public function getIsAjaxButNotPjax()

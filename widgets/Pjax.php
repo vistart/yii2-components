@@ -12,6 +12,8 @@
 
 namespace vistart\components\widgets;
 
+use yii\helpers\Json;
+use yii\widgets\Pjax;
 use yii\widgets\PjaxAsset;
 
 /**
@@ -19,7 +21,7 @@ use yii\widgets\PjaxAsset;
  *
  * @author vistart <i@vistart.name>
  */
-class Pjax extends \yii\widgets\Pjax
+class Pjax extends Pjax
 {
 
     public function generateClientScript()
